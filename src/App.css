@@ -108,7 +108,7 @@ cursor: pointer;
    transform: scale(1.1);
 
 }
-.card:active, .card:focus, .card.touched {
+.card:active, .card:focus {
   box-shadow: 0 0 2px #fff, 0 0 10px #fff, 0 0 20px #f0f279, 0 0 30px #f0f279,
     0 0 40px #f0f279, 0 0 50px #f0f279;
 }

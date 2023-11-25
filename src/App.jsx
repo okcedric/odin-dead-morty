@@ -62,14 +62,10 @@ function App() {
   if (dealt) {
     cards = dealt.map((index) => {
       let morty = data[index];
-      let isTouched = "card";
-      touchedCardsIds.includes(morty.id) && (isTouched = "card touched"); // uncomment this line to cheat
-      let image = morty.image;
       return (
         <Card
           key={morty.id}
           morty={morty}
-          isTouched={isTouched}
           handleTouch={handleTouch}
         />
       );

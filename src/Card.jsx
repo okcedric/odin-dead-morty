@@ -1,10 +1,10 @@
-function Card({ morty, isTouched, handleTouch }) {
+function Card({ morty, handleTouch }) {
   let image = morty.image;
 
   return (
     <div
-      className={isTouched}
       key={morty.id}
+      className="card"
       onClick={() => handleTouch(morty.id)}
     >
       <div className="image" style={{ backgroundImage: `url(${image})` }}></div>
