@@ -160,6 +160,7 @@ cursor: pointer;
   position: fixed;
   top: 0;
   background-color:#131323EE ;
+  backdrop-filter: blur(10px);
   z-index: 1000;
 }
 
