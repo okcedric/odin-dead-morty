@@ -2,7 +2,6 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Overlay from "./Overlay";
 import Board from "./Board";
-import Card from "./Card";
 import dealtCards from "./Deal";
 import { fetchData } from "./Data";
 import { Grid } from "./Grid";
@@ -17,7 +16,6 @@ function App() {
   const [data, setData] = useState(null);
   const [dealt, setDealt] = useState(null);
   const currentScore = touchedCardsIds.length;
-  let cards = null;
   
    useEffect(() => {
      const loadData = async () => {
