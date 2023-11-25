@@ -1,3 +1,5 @@
+import "./Board.css";
+
 function Board({ hiScore, currentScore, hasBeatGame }) {
   const medal = hasBeatGame && <span>(max)</span>;
 

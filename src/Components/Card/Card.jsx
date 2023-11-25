@@ -1,3 +1,4 @@
+import './Card.css'
 function Card({ morty, handleTouch }) {
   let image = morty.image;
 

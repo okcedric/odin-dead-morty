@@ -1,3 +1,5 @@
+import './Overlay.css'
+
 function Overlay({isGameOver,isGameBeaten,currentScore,retry}){
     
     let overlay = null;

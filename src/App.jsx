@@ -1,11 +1,10 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
-import Overlay from "./Overlay";
-import Board from "./Board";
+import Overlay from "./Components/Overlay/Overlay";
+import Board from "./Components/Board/Board";
 import dealtCards from "./Deal";
 import { fetchData } from "./Data";
-import { Grid } from "./Grid";
-
+import { Grid } from "./Components/Grid/Grid";
 
 function App() {
   const [touchedCardsIds, setTouchedCardsIds] = useState([]);
@@ -57,9 +56,7 @@ function App() {
     setIsGameBeaten(false);
     setTouchedCardsIds([]);
   };
-
   
-
   return (
     <>
       <img

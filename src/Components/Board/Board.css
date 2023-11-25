@@ -1,0 +1,18 @@
+/*SCOREBOARD*/
+
+.board {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  text-align: end;
+  right: 0;
+  top: 0;
+  color: #fff;
+  font-family: "Inter Tight", Inter, sans-serif;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+.board span {
+  color: #f0f279;
+}

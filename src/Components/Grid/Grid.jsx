@@ -1,4 +1,5 @@
-import Card from "./Card";
+import Card from "../Card/Card";
+import './Grid.css'
 export function Grid({dealt, data, handleTouch}) {
     let cards = null
   if (dealt) {
