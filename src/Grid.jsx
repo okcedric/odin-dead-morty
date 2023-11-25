@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Overlay from "./Overlay";
 
 function Grid() {
   const [touchedCardsIds, setTouchedCardsIds] = useState([]);
@@ -30,9 +31,9 @@ function Grid() {
   }, []);
 
   const randomPick = (min, max) => {
-      return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
+    return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
   };
-  
+
   const dealCards = () => {
     let indexList = [];
     for (let i = 0; i < data.length; i++) {
@@ -81,40 +82,36 @@ function Grid() {
         setHiScore(currentScore);
         setIsGameBeaten(true);
         setHasBeatGame(true);
-      }else{
+      } else {
         dealCards();
       }
-      
     }
   }, [touchedCardsIds]);
 
   const handleTouch = (id) => {
-    let alreadyTouched = touchedCardsIds.includes(id);
     //if the card has already been touched
-    if (alreadyTouched) {
+    if (touchedCardsIds.includes(id)) {
       //game Over
       setIsGameOver(true);
       // if Hi score < current score New Hi score
-      hiScore < currentScore && setHiScore(currentScore);
-      // empty touched card array
-      
+      hiScore < currentScore && setHiScore(currentScore); 
     } else {
       //Else add new id to touched Cards list
       if (id) setTouchedCardsIds([...touchedCardsIds, id]);
     }
   };
 
-  const retry = ()=> {
+  const retry = () => {
     setIsGameOver(false);
-    setIsGameBeaten(false)
+    setIsGameBeaten(false);
     setTouchedCardsIds([]);
-  }
+  };
 
   if (dealt) {
     cards = dealt.map((index) => {
       let morty = data[index];
       let isTouched = "card";
-     // touchedCardsIds.includes(morty.id) && (isTouched = isTouched + " touched"); // uncomment this line to cheat 
+       touchedCardsIds.includes(morty.id) && (isTouched = isTouched + " touched"); // uncomment this line to cheat
       let image = morty.image;
       return (
         <div
@@ -130,34 +127,17 @@ function Grid() {
         </div>
       );
     });
-    if(isGameOver) {
-      overlay = <div className="overlay">
-        <h2>Game Over</h2>
-        <h3>You probably did better than {currentScore} in an alternate universe ... </h3>
-        <button onClick={retry}>Retry</button>
-      </div>
-    }
-    if(isGameBeaten) {
-       overlay = (
-         <div className="overlay">
-           <h2>Congratulations</h2>
-           <h3>
-             "Nobody exists on purpose. Nobody belongs anywhere. We’re all going
-             to die." 
-           </h3>
-           <button onClick={retry}>Retry</button>
-         </div>
-       );
-    }
-      
-    
   }
-
-  
+  console.log([isGameBeaten, isGameOver]);
 
   return (
     <>
-    {overlay}
+      <Overlay
+        isGameOver={isGameOver}
+        isGameBeaten={isGameBeaten}
+        currentScore={currentScore}
+        retry={retry}
+      />
       <div className="board">
         <div className="currentScore"> Current Score : {currentScore} </div>
         <div className="hiScore">
