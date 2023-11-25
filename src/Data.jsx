@@ -1,20 +1,17 @@
-import React, { useState, useEffect } from "react";
-
-
-    const [data, setData] = useState(null);
-  useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character/?name=morty&status=dead")
-      .then((response) => response.json())
-      .then((json) => setData(json))
-      .catch((error) => console.error(error));
-  }, [])
-
-if (data) {
- // get "Morty Smith" from Remplacement Dimension 
-data = data.results.map((morty)=>{ 
- return morty.name === 'Morty Smith' ? {... morty, name : "Morty (Replacement Dimension)" } : morty 
-}); 
-}
-
-
-export default data
+export const fetchData = async () => {
+  try {
+    const response = await fetch(
+      "https://rickandmortyapi.com/api/character/?name=morty&status=dead"
+    );
+    const json = await response.json();
+    const data = json.results.map((morty) => {
+      return morty.name === "Morty Smith"
+        ? { ...morty, name: "Morty (Replacement Dimension)" }
+        : morty;
+    });
+    return data;
+  } catch (error) {
+    console.error(error);
+    return null; // ou tu peux retourner une valeur par défaut ou lever une exception
+  }
+};

@@ -4,6 +4,7 @@ import Overlay from "./Overlay";
 import Board from "./Board";
 import Card from "./Card";
 import dealtCards from "./Deal";
+import { fetchData } from "./Data";
 
 
 function App() {
@@ -16,27 +17,14 @@ function App() {
   const [dealt, setDealt] = useState(null);
   const currentScore = touchedCardsIds.length;
   let cards = null;
-  useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character/?name=morty&status=dead")
-      .then((response) => response.json())
-      .then((json) => {
-        // get "Morty Smith" from Remplacement Dimension
-        json = json.results.map((morty) => {
-          return morty.name === "Morty Smith"
-            ? { ...morty, name: "Morty (Replacement Dimension)" }
-            : morty;
-        });
-        setData(json);
-      })
-      .catch((error) => console.error(error));
-  }, []);
-
   
-
-  //when data is fetch, deal cards
-  useEffect(() => {
-    if (data) setDealt(dealtCards(data,touchedCardsIds));
-  }, [data]);
+   useEffect(() => {
+     const loadData = async () => {
+       const dataFetched = await fetchData();
+       if (dataFetched) setData(dataFetched);
+     };
+     loadData();
+   }, []);
 
   // When a new card is added to the touched list
   useEffect(() => {
@@ -50,7 +38,7 @@ function App() {
         setDealt(dealtCards(data, touchedCardsIds));
       }
     }
-  }, [touchedCardsIds]);
+  }, [touchedCardsIds,data]);
 
   const handleTouch = (id) => {
     //if the card has already been touched
