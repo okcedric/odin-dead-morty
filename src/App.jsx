@@ -2,7 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import Overlay from "./Components/Overlay/Overlay";
 import Board from "./Components/Board/Board";
-import dealtCards from "./Deal";
+import dealtCards from "./Logic";
 import { fetchData } from "./Data";
 import { Grid } from "./Components/Grid/Grid";
 
