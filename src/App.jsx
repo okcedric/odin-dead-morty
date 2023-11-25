@@ -5,6 +5,7 @@ import Board from "./Board";
 import Card from "./Card";
 import dealtCards from "./Deal";
 import { fetchData } from "./Data";
+import { Grid } from "./Grid";
 
 
 function App() {
@@ -59,18 +60,7 @@ function App() {
     setTouchedCardsIds([]);
   };
 
-  if (dealt) {
-    cards = dealt.map((index) => {
-      let morty = data[index];
-      return (
-        <Card
-          key={morty.id}
-          morty={morty}
-          handleTouch={handleTouch}
-        />
-      );
-    });
-  }
+  
 
   return (
     <>
@@ -92,7 +82,7 @@ function App() {
         currentScore={currentScore}
         hasBeatGame={hasBeatGame}
       />
-      <div className="grid">{cards}</div>
+      <Grid dealt = {dealt} data = {data} handleTouch = {handleTouch} />
     </>
   );
 }
