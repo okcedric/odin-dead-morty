@@ -1,6 +1,8 @@
 /*CARD*/
 
 .card {
+  height: 18rem;
+  width: 12rem;
   display: flex;
   align-items: start;
   flex-direction: column;
@@ -19,8 +21,6 @@
   animation: blink 0.7s infinite alternate;
   transform: scale(1.1);
 }
-
-
 
 
 .card.hoverable:active {
